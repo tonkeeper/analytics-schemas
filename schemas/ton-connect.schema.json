@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "TcRequest": {
+      "type": "object",
+      "properties": {
+        "name": { "const": "tc_request" },
+        "dapp_url": { "type": "string", "format": "uri" }
+      },
+      "required": ["name", "dapp_url"]
+    },
+    "TcConnect": {
+      "type": "object",
+      "properties": {
+        "name": { "const": "tc_connect" },
+        "dapp_url": { "type": "string", "format": "uri" },
+        "allow_notifications": {
+          "type": "boolean"
+        }
+      },
+      "required": ["name", "dapp_url", "allow_notifications"]
+    },
+    "TcViewConfirm": {
+      "type": "object",
+      "properties": {
+        "name": { "const": "tc_view_confirm" },
+        "dapp_url": { "type": "string", "format": "uri" },
+        "address_type": {
+          "type": "string",
+          "enum": ["raw", "bounce", "non-bounce"]
+        }
+      },
+      "required": ["name", "dapp_url", "address_type"]
+    },
+    "TcSendSuccess": {
+      "type": "object",
+      "properties": {
+        "name": { "const": "tc_send_success" },
+        "dapp_url": { "type": "string", "format": "uri" },
+        "address_type": {
+          "type": "string",
+          "enum": ["raw", "bounce", "non-bounce"]
+        },
+        "network_fee_paid": {
+          "type": "string",
+          "enum": ["ton", "gasless", "battery"]
+        }
+      },
+      "required": ["name", "dapp_url", "address_type", "network_fee_paid"]
+    }
+  }
+}
