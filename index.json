@@ -1,1 +1,4 @@
-["schemas/dapp-browser.schema.json"]
+[
+  "schemas/dapp-browser.schema.json",
+  "schemas/ton-connect.schema.json"
+]
