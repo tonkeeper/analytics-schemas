@@ -1,13 +1,5 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "DappBrowserEvents",
-  "oneOf": [
-    { "$ref": "#/$defs/DappBrowserOpen" },
-    { "$ref": "#/$defs/DappPin" },
-    { "$ref": "#/$defs/DappUnpin" },
-    { "$ref": "#/$defs/DappClick" },
-    { "$ref": "#/$defs/DappSharingCopy" }
-  ],
   "$defs": {
     "DappBrowserOpen": {
       "type": "object",
