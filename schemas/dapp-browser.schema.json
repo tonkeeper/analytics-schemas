@@ -2,91 +2,110 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$defs": {
     "DappBrowserOpen": {
-      "allOf": [
-        { "$ref": "_main.schema.json#/$defs/AnalyticsEvent" },
-        {
-          "type": "object",
-          "properties": {
-            "name": { "const": "dapp_browser_open" },
-            "from": {
-              "type": "array",
-              "items": { "type": "string", "enum": ["wallet", "history", "deep-link", "story"] }
-            },
-            "type": {
-              "type": "array",
-              "items": { "type": "string", "enum": ["explore", "connected"] }
-            },
-            "location": { "type": "string" }
-          },
-          "required": ["name", "from", "type", "location"]
+      "type": "object",
+      "properties": {
+        "name": { 
+          "const": "dapp_browser_open",
+          "description": "Event name identifier"
+        },
+        "from": {
+          "type": "string",
+          "enum": ["wallet", "history", "deep-link", "story"],
+          "description": "Source from which the dapp browser was opened"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["explore", "connected"],
+          "description": "Type of dapp browser session"
+        },
+        "location": { 
+          "type": "string",
+          "description": "2-letter string in ISO-3166 format"
         }
-      ]
+      },
+      "required": ["name", "from", "type", "location"]
     },
     "DappPin": {
-      "allOf": [
-        { "$ref": "_main.schema.json#/$defs/AnalyticsEvent" },
-        {
-          "type": "object",
-          "properties": {
-            "name": { "const": "dapp_pin" },
-            "url": { "type": "string", "format": "uri" },
-            "location": { "type": "string" }
-          },
-          "required": ["name", "url", "location"]
+      "type": "object",
+      "properties": {
+        "name": { 
+          "const": "dapp_pin",
+          "description": "Event name identifier"
+        },
+        "url": { 
+          "type": "string", 
+          "format": "uri",
+          "description": "URL domain only, without private information"
+        },
+        "location": { 
+          "type": "string",
+          "description": "2-letter string in ISO-3166 format"
         }
-      ]
+      },
+      "required": ["name", "url", "location"]
     },
     "DappUnpin": {
-      "allOf": [
-        { "$ref": "_main.schema.json#/$defs/AnalyticsEvent" },
-        {
-          "type": "object",
-          "properties": {
-            "name": { "const": "dapp_unpin" },
-            "url": { "type": "string", "format": "uri" },
-            "location": { "type": "string" }
-          },
-          "required": ["name", "url", "location"]
+      "type": "object",
+      "properties": {
+        "name": { 
+          "const": "dapp_unpin",
+          "description": "Event name identifier"
+        },
+        "url": { 
+          "type": "string", 
+          "format": "uri",
+          "description": "URL domain only, without private information"
+        },
+        "location": { 
+          "type": "string",
+          "description": "2-letter string in ISO-3166 format"
         }
-      ]
+      },
+      "required": ["name", "url", "location"]
     },
     "DappClick": {
-      "allOf": [
-        { "$ref": "_main.schema.json#/$defs/AnalyticsEvent" },
-        {
-          "type": "object",
-          "properties": {
-            "name": { "const": "dapp_click" },
-            "url": { "type": "string", "format": "uri" },
-            "location": { "type": "string" },
-            "from": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": ["banner", "browser", "browser_search", "browser_connected", "push"]
-              }
-            }
-          },
-          "required": ["name", "url", "location", "from"]
+      "type": "object",
+      "properties": {
+        "name": { 
+          "const": "dapp_click",
+          "description": "Event name identifier"
+        },
+        "url": { 
+          "type": "string", 
+          "format": "uri",
+          "description": "URL domain only, without private information"
+        },
+        "location": { 
+          "type": "string",
+          "description": "2-letter string in ISO-3166 format"
+        },
+        "from": {
+          "type": "string",
+          "enum": ["banner", "browser", "browser_search", "browser_connected", "push"],
+          "description": "Source from which the dapp was clicked"
         }
-      ]
+      },
+      "required": ["name", "url", "location", "from"]
     },
     "DappSharingCopy": {
-      "allOf": [
-        { "$ref": "_main.schema.json#/$defs/AnalyticsEvent" },
-        {
-          "type": "object",
-          "properties": {
-            "name": { "const": "dapp_sharing_copy" },
-            "url": { "type": "string", "format": "uri" },
-            "from": {
-              "type": "array",
-              "items": { "type": "string", "enum": ["Share", "Copy link"] }
-            }
-          },
-          "required": ["name", "url", "from"]
+      "type": "object",
+      "properties": {
+        "name": { 
+          "const": "dapp_sharing_copy",
+          "description": "Event name identifier"
+        },
+        "url": { 
+          "type": "string", 
+          "format": "uri",
+          "description": "URL domain only, without private information"
+        },
+        "from": {
+          "type": "string",
+          "enum": ["Share", "Copy link"],
+          "description": "Source of the sharing action"
         }
-      ]
+      },
+      "required": ["name", "url", "from"]
     }
   }
 }
