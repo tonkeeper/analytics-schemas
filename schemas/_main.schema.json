@@ -6,7 +6,7 @@
       "properties": {
         "os_name": { 
           "type": "string",
-          "enum": ["ios", "android", "windows", "linux", "macos"],
+          "enum": ["iOS", "Linux", "Windows", "Android", "macOS"],
           "description": "The operating system name where the event occurred"
         },
         "timestamp": { 
