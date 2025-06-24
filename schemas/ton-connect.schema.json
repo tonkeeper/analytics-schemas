@@ -47,6 +47,18 @@
         }
       },
       "required": ["name", "dapp_url", "address_type", "network_fee_paid"]
+    },
+    "TcSignDataSuccess": {
+      "type": "object",
+      "properties": {
+        "name": { "const": "tc_sign_data_success" },
+        "dapp_url": { "type": "string", "format": "uri" },
+        "payload_type": {
+          "type": "string",
+          "enum": ["text", "binary", "cell"]
+        }
+      },
+      "required": ["name", "dapp_url", "payload_type"]
     }
   }
 }
