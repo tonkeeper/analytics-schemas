@@ -1,4 +1,6 @@
 [
+  "schemas/_main.schema.json",
   "schemas/dapp-browser.schema.json",
-  "schemas/ton-connect.schema.json"
+  "schemas/ton-connect.schema.json",
+  "schemas/test.schema.json"
 ]
