@@ -25,6 +25,11 @@ Individual schema files (like `dapp-browser.schema.json`) contain the specific p
 - `DappClick` - When a dapp is clicked
 - etc.
 
+### How to add a new event
+
+1. Add a new schema file in the `schemas` directory.
+2. Add the new schema to the `index.json` file.
+
 ## Usage in Code
 
 ### ✅ Recommended Approach
