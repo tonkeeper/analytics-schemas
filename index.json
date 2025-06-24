@@ -1,8 +1,7 @@
 {
   "events": [
     "schemas/dapp-browser.schema.json",
-    "schemas/ton-connect.schema.json",
-    "schemas/test.schema.json"
+    "schemas/ton-connect.schema.json"
   ],
   "main": "schemas/_main.schema.json"
 }
