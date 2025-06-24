@@ -2,66 +2,91 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$defs": {
     "DappBrowserOpen": {
-      "type": "object",
-      "properties": {
-        "name": { "const": "dapp_browser_open" },
-        "from": {
-          "type": "array",
-          "items": { "type": "string", "enum": ["wallet", "history", "deep-link", "story"] }
-        },
-        "type": {
-          "type": "array",
-          "items": { "type": "string", "enum": ["explore", "connected"] }
-        },
-        "location": { "type": "string" }
-      },
-      "required": ["name", "from", "type", "location"]
+      "allOf": [
+        { "$ref": "_main.schema.json#/$defs/AnalyticsEvent" },
+        {
+          "type": "object",
+          "properties": {
+            "name": { "const": "dapp_browser_open" },
+            "from": {
+              "type": "array",
+              "items": { "type": "string", "enum": ["wallet", "history", "deep-link", "story"] }
+            },
+            "type": {
+              "type": "array",
+              "items": { "type": "string", "enum": ["explore", "connected"] }
+            },
+            "location": { "type": "string" }
+          },
+          "required": ["name", "from", "type", "location"]
+        }
+      ]
     },
     "DappPin": {
-      "type": "object",
-      "properties": {
-        "name": { "const": "dapp_pin" },
-        "url": { "type": "string", "format": "uri" },
-        "location": { "type": "string" }
-      },
-      "required": ["name", "url", "location"]
+      "allOf": [
+        { "$ref": "_main.schema.json#/$defs/AnalyticsEvent" },
+        {
+          "type": "object",
+          "properties": {
+            "name": { "const": "dapp_pin" },
+            "url": { "type": "string", "format": "uri" },
+            "location": { "type": "string" }
+          },
+          "required": ["name", "url", "location"]
+        }
+      ]
     },
     "DappUnpin": {
-      "type": "object",
-      "properties": {
-        "name": { "const": "dapp_unpin" },
-        "url": { "type": "string", "format": "uri" },
-        "location": { "type": "string" }
-      },
-      "required": ["name", "url", "location"]
+      "allOf": [
+        { "$ref": "_main.schema.json#/$defs/AnalyticsEvent" },
+        {
+          "type": "object",
+          "properties": {
+            "name": { "const": "dapp_unpin" },
+            "url": { "type": "string", "format": "uri" },
+            "location": { "type": "string" }
+          },
+          "required": ["name", "url", "location"]
+        }
+      ]
     },
     "DappClick": {
-      "type": "object",
-      "properties": {
-        "name": { "const": "dapp_click" },
-        "url": { "type": "string", "format": "uri" },
-        "location": { "type": "string" },
-        "from": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": ["banner", "browser", "browser_search", "browser_connected", "push"]
-          }
+      "allOf": [
+        { "$ref": "_main.schema.json#/$defs/AnalyticsEvent" },
+        {
+          "type": "object",
+          "properties": {
+            "name": { "const": "dapp_click" },
+            "url": { "type": "string", "format": "uri" },
+            "location": { "type": "string" },
+            "from": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["banner", "browser", "browser_search", "browser_connected", "push"]
+              }
+            }
+          },
+          "required": ["name", "url", "location", "from"]
         }
-      },
-      "required": ["name", "url", "location", "from"]
+      ]
     },
     "DappSharingCopy": {
-      "type": "object",
-      "properties": {
-        "name": { "const": "dapp_sharing_copy" },
-        "url": { "type": "string", "format": "uri" },
-        "from": {
-          "type": "array",
-          "items": { "type": "string", "enum": ["Share", "Copy link"] }
+      "allOf": [
+        { "$ref": "_main.schema.json#/$defs/AnalyticsEvent" },
+        {
+          "type": "object",
+          "properties": {
+            "name": { "const": "dapp_sharing_copy" },
+            "url": { "type": "string", "format": "uri" },
+            "from": {
+              "type": "array",
+              "items": { "type": "string", "enum": ["Share", "Copy link"] }
+            }
+          },
+          "required": ["name", "url", "from"]
         }
-      },
-      "required": ["name", "url", "from"]
+      ]
     }
   }
 }
