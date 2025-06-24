@@ -81,7 +81,7 @@
         },
         "from": {
           "type": "string",
-          "enum": ["banner", "browser", "browser_search", "browser_connected", "push"],
+          "enum": ["banner", "browser", "browser_search", "browser_connected", "push", "sidebar"],
           "description": "Source from which the dapp was clicked"
         }
       },
