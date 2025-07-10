@@ -1,0 +1,109 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$defs": {
+        "SwapOpen": {
+            "type": "object",
+            "description": "User on WALLET screen clicked SWAP action button",
+            "properties": {
+                "name": {
+                    "const": "swap_open",
+                    "description": "Event name identifier"
+                },
+                "provider_name": {
+                    "type": "string",
+                    "description": "Name of the swap provider"
+                },
+                "provider_domain": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Domain of the swap provider"
+                }
+            },
+            "required": ["name", "provider_name", "provider_domain"]
+        },
+        "SwapClick": {
+            "type": "object",
+            "description": "After filling in swap info, user on SWAP screen clicked CONTINUE action button",
+            "properties": {
+                "name": {
+                    "const": "swap_click",
+                    "description": "Event name identifier"
+                },
+                "jetton_symbol_from": {
+                    "type": "string",
+                    "description": "Symbol of the jetton being swapped from"
+                },
+                "jetton_symbol_to": {
+                    "type": "string",
+                    "description": "Symbol of the jetton being swapped to"
+                },
+                "provider_name": {
+                    "type": "string",
+                    "description": "Name of the swap provider"
+                },
+                "provider_domain": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Domain of the swap provider"
+                }
+            },
+            "required": ["name", "jetton_symbol_from", "jetton_symbol_to", "provider_name", "provider_domain"]
+        },
+        "SwapConfirm": {
+            "type": "object",
+            "description": "After reviewing the swap info, user on CONFIRM SWAP screen clicked CONFIRM action button",
+            "properties": {
+                "name": {
+                    "const": "swap_confirm",
+                    "description": "Event name identifier"
+                },
+                "jetton_symbol_from": {
+                    "type": "string",
+                    "description": "Symbol of the jetton being swapped from"
+                },
+                "jetton_symbol_to": {
+                    "type": "string",
+                    "description": "Symbol of the jetton being swapped to"
+                },
+                "provider_name": {
+                    "type": "string",
+                    "description": "Name of the swap provider"
+                },
+                "provider_domain": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Domain of the swap provider"
+                }
+            },
+            "required": ["name", "jetton_symbol_from", "jetton_symbol_to", "provider_name", "provider_domain"]
+        },
+        "SwapSuccess": {
+            "type": "object",
+            "description": "After confirming the swap info, user on CONFIRM ACTION screen have to SLIDE TO CONFIRM",
+            "properties": {
+                "name": {
+                    "const": "swap_success",
+                    "description": "Event name identifier"
+                },
+                "jetton_symbol_from": {
+                    "type": "string",
+                    "description": "Symbol of the jetton being swapped from"
+                },
+                "jetton_symbol_to": {
+                    "type": "string",
+                    "description": "Symbol of the jetton being swapped to"
+                },
+                "provider_name": {
+                    "type": "string",
+                    "description": "Name of the swap provider"
+                },
+                "provider_domain": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Domain of the swap provider"
+                }
+            },
+            "required": ["name", "jetton_symbol_from", "jetton_symbol_to", "provider_name", "provider_domain"]
+        }
+    }
+} 
