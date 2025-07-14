@@ -113,6 +113,34 @@ python scripts/validate_schemas.py schemas/_main.schema.json
 
 The validation script will show detailed error messages if any schemas are invalid, including the specific path where errors occur.
 
+### GitHub Actions
+
+The repository includes a GitHub Actions workflow (`.github/workflows/validate-schemas.yml`) that automatically:
+
+1. **Validates JSON schemas** on every push and pull request
+2. **Checks JSON syntax** for all JSON files
+3. **Auto-updates index.json** when schema files are added/removed
+4. **Generates validation reports** as artifacts
+5. **Auto-commits changes** back to the repository when needed
+
+#### Features
+
+- **Multi-trigger**: Runs on push to `main`/`develop`, pull requests, and manual dispatch
+- **Smart detection**: Only runs update logic when schema files actually change
+- **Safe automation**: Only pushes back to `main` branch, includes `[skip ci]` to prevent loops
+- **Comprehensive validation**: Uses the same validation logic as pre-commit hooks
+- **Artifact reports**: Saves validation reports for debugging
+
+#### Manual Index Update
+
+You can also manually update the `index.json` file:
+
+```bash
+python scripts/update_index.py
+```
+
+This script automatically scans the `schemas/` directory and updates `index.json` with all `.schema.json` files (except `_main.schema.json`).
+
 ## File Structure
 
 ```
