@@ -1,0 +1,109 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$defs": {
+        "OnrampOpen": {
+            "type": "object",
+            "description": "User on WALLET screen clicked BUY&SELL action button",
+            "properties": {
+                "name": {
+                    "const": "onramp_open",
+                    "description": "Event name identifier"
+                },
+                "from": {
+                    "type": "string",
+                    "description": "Source location where the onramp was opened"
+                }
+            },
+            "required": ["name", "from"]
+        },
+        "OnrampEnterAmount": {
+            "type": "object",
+            "description": "User clicked 'continue' after entering buy/sell amount",
+            "properties": {
+                "name": {
+                    "const": "onramp_enter_amount",
+                    "description": "Event name identifier"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["buy", "sell", "swap"],
+                    "description": "Type of onramp transaction"
+                },
+                "sell_asset": {
+                    "type": "string",
+                    "description": "Asset being sold/converted from\nexamples: [\"fiat\", \"crypto_ton\", \"crypto_usdt\", \"crypto_dogs\", ...], # all fiat txs will be as 'fiat', while for crypto we want to differentiate"
+                },
+                "buy_asset": {
+                    "type": "string",
+                    "description": "Asset being bought/converted to\nexamples: [\"fiat\", \"crypto_ton\", \"crypto_usdt\", \"crypto_dogs\", ...], # all fiat txs will be as 'fiat', while for crypto we want to differentiate"
+                },
+                "country_code": {
+                    "type": ["string", "null"],
+                    "pattern": "^[A-Z]{2}$|^null$",
+                    "description": "Country code for the transaction"
+                }
+            },
+            "required": ["name", "type", "sell_asset", "buy_asset", "country_code"]
+        },
+        "OnrampContinueToProvider": {
+            "type": "object",
+            "description": "User clicked 'continue' after choosing the payment method and provider",
+            "properties": {
+                "name": {
+                    "const": "onramp_continue_to_provider",
+                    "description": "Event name identifier"
+                },
+                "type": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": ["buy", "sell"]
+                    },
+                    "description": "Type of onramp transaction"
+                },
+                "sell_asset": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": ["fiat", "crypto_ton", "crypto"]
+                    },
+                    "description": "Asset being sold/converted from"
+                },
+                "buy_asset": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": ["fiat", "crypto_ton", "crypto"]
+                    },
+                    "description": "Asset being bought/converted to"
+                },
+                "country_code": {
+                    "type": "array",
+                    "items": {
+                        "type": ["string", "null"],
+                        "pattern": "^[A-Z]{2}$|^null$"
+                    },
+                    "description": "Country code for the transaction"
+                },
+                "payment_method": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": ["apple_pay", "google_pay", "paypal", "card", "sepa", "venmo", "revolut", "pix", "volt"]
+                    },
+                    "description": "Selected payment method"
+                },
+                "provider_name": {
+                    "type": "string",
+                    "description": "Name of the onramp provider"
+                },
+                "provider_domain": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Domain of the onramp provider"
+                }
+            },
+            "required": ["name", "type", "sell_asset", "buy_asset", "country_code", "payment_method", "provider_name", "provider_domain"]
+        }
+    }
+} 
