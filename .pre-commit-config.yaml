@@ -1,0 +1,22 @@
+repos:
+  # JSON syntax validation
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-json
+        name: Check JSON syntax
+        description: Validates that JSON files are parseable
+
+  # JSON Schema validation
+  - repo: local
+    hooks:
+      - id: validate-json-schema
+        name: Validate JSON Schema files
+        entry: python scripts/validate_schemas.py
+        language: python
+        files: '\.schema\.json$'
+        additional_dependencies:
+          - jsonschema>=4.17.0
+          - referencing>=0.28.0
+        pass_filenames: true
+        description: Validates JSON Schema files against draft 2020-12 specification 

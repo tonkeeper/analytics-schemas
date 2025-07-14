@@ -83,6 +83,36 @@ Don't manually add base properties to every event - use the abstraction layer in
 
 Use the schemas to validate your events before sending them to your analytics service. The schemas ensure data quality and consistency across your application.
 
+### Pre-commit Hooks
+
+This repository includes pre-commit hooks that automatically validate all JSON schema files against the JSON Schema draft 2020-12 specification. The hooks will:
+
+1. **Check JSON syntax** - Ensures all JSON files are properly formatted
+2. **Validate JSON Schemas** - Validates that `.schema.json` files conform to the draft 2020-12 specification
+
+#### Setup
+
+Pre-commit hooks are already configured in `.pre-commit-config.yaml`. To install them:
+
+```bash
+pip install pre-commit
+pre-commit install
+```
+
+#### Manual Validation
+
+You can also manually validate schema files:
+
+```bash
+# Validate all schema files
+python scripts/validate_schemas.py schemas/*.schema.json
+
+# Validate a specific schema file
+python scripts/validate_schemas.py schemas/_main.schema.json
+```
+
+The validation script will show detailed error messages if any schemas are invalid, including the specific path where errors occur.
+
 ## File Structure
 
 ```
