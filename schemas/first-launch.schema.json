@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "FirstLaunch": {
+      "type": "object",
+      "properties": {
+        "name": { 
+          "const": "first_launch",
+          "description": "Event name identifier"
+        }
+      },
+      "required": ["name"],
+      "description": "User launched the app for the first time. Implemented by storing a firstLaunchTS object in the local storage"
+    }
+  }
+} 
