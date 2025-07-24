@@ -1,0 +1,172 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$defs": {
+        "StakingOpen": {
+            "type": "object",
+            "description": "User opened staking page",
+            "properties": {
+                "name": {
+                    "const": "staking_open",
+                    "description": "Event name identifier"
+                },
+                "from": {
+                    "type": "string",
+                    "description": "Name of the previous page"
+                }
+            },
+            "required": ["name", "from"]
+        },
+        "StakingPlusInput": {
+            "type": "object",
+            "description": "User is presented with the staking input field",
+            "properties": {
+                "name": {
+                    "const": "staking_plus_input",
+                    "description": "Event name identifier"
+                },
+                "from": {
+                    "type": "string",
+                    "description": "Name of the previous page"
+                },
+                "jetton_symbol": {
+                    "type": "string",
+                    "description": "Symbol of the jetton being staked"
+                },
+                "provider_name": {
+                    "type": "string",
+                    "description": "Name of the staking provider"
+                },
+                "provider_domain": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Domain of the staking provider"
+                }
+            },
+            "required": ["name", "from", "jetton_symbol", "provider_name", "provider_domain"]
+        },
+        "StakingPlusConfirm": {
+            "type": "object",
+            "description": "User is presented with the staking confirmation slider",
+            "properties": {
+                "name": {
+                    "const": "staking_plus_confirm",
+                    "description": "Event name identifier"
+                },
+                "jetton_symbol": {
+                    "type": "string",
+                    "description": "Symbol of the jetton being staked"
+                },
+                "provider_name": {
+                    "type": "string",
+                    "description": "Name of the staking provider"
+                },
+                "provider_domain": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Domain of the staking provider"
+                }
+            },
+            "required": ["name", "jetton_symbol", "provider_name", "provider_domain"]
+        },
+        "StakingPlusSuccess": {
+            "type": "object",
+            "description": "Staking successful",
+            "properties": {
+                "name": {
+                    "const": "staking_plus_success",
+                    "description": "Event name identifier"
+                },
+                "jetton_symbol": {
+                    "type": "string",
+                    "description": "Symbol of the jetton being staked"
+                },
+                "provider_name": {
+                    "type": "string",
+                    "description": "Name of the staking provider"
+                },
+                "provider_domain": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Domain of the staking provider"
+                }
+            },
+            "required": ["name", "jetton_symbol", "provider_name", "provider_domain"]
+        },
+        "StakingMinusInput": {
+            "type": "object",
+            "description": "User is presented with the unstaking input field",
+            "properties": {
+                "name": {
+                    "const": "staking_minus_input",
+                    "description": "Event name identifier"
+                },
+                "from": {
+                    "type": "string",
+                    "description": "Name of the previous page"
+                },
+                "jetton_symbol": {
+                    "type": "string",
+                    "description": "Symbol of the jetton being unstaked"
+                },
+                "provider_name": {
+                    "type": "string",
+                    "description": "Name of the staking provider"
+                },
+                "provider_domain": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Domain of the staking provider"
+                }
+            },
+            "required": ["name", "from", "jetton_symbol", "provider_name", "provider_domain"]
+        },
+        "StakingMinusConfirm": {
+            "type": "object",
+            "description": "User is presented with the unstaking confirmation slider",
+            "properties": {
+                "name": {
+                    "const": "staking_minus_confirm",
+                    "description": "Event name identifier"
+                },
+                "jetton_symbol": {
+                    "type": "string",
+                    "description": "Symbol of the jetton being unstaked"
+                },
+                "provider_name": {
+                    "type": "string",
+                    "description": "Name of the staking provider"
+                },
+                "provider_domain": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Domain of the staking provider"
+                }
+            },
+            "required": ["name", "jetton_symbol", "provider_name", "provider_domain"]
+        },
+        "StakingMinusSuccess": {
+            "type": "object",
+            "description": "Unstaking successful",
+            "properties": {
+                "name": {
+                    "const": "staking_minus_success",
+                    "description": "Event name identifier"
+                },
+                "jetton_symbol": {
+                    "type": "string",
+                    "description": "Symbol of the jetton being unstaked"
+                },
+                "provider_name": {
+                    "type": "string",
+                    "description": "Name of the staking provider"
+                },
+                "provider_domain": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Domain of the staking provider"
+                }
+            },
+            "required": ["name", "jetton_symbol", "provider_name", "provider_domain"]
+        }
+    }
+} 

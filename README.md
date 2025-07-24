@@ -119,15 +119,11 @@ The repository includes a GitHub Actions workflow (`.github/workflows/validate-s
 
 1. **Validates JSON schemas** on every push and pull request
 2. **Checks JSON syntax** for all JSON files
-3. **Auto-updates index.json** when schema files are added/removed
-4. **Generates validation reports** as artifacts
-5. **Auto-commits changes** back to the repository when needed
+3. **Generates validation reports** as artifacts
 
 #### Features
 
 - **Multi-trigger**: Runs on push to `main`/`develop`, pull requests, and manual dispatch
-- **Smart detection**: Only runs update logic when schema files actually change
-- **Safe automation**: Only pushes back to `main` branch, includes `[skip ci]` to prevent loops
 - **Comprehensive validation**: Uses the same validation logic as pre-commit hooks
 - **Artifact reports**: Saves validation reports for debugging
 

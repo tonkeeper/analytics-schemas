@@ -3,6 +3,7 @@
     "schemas/dapp-browser.schema.json",
     "schemas/first-launch.schema.json",
     "schemas/onramps-native.schema.json",
+    "schemas/staking-native.schema.json",
     "schemas/swaps-native.schema.json",
     "schemas/ton-connect.schema.json"
   ],

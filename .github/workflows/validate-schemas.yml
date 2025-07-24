@@ -14,9 +14,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        fetch-depth: 0
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -41,38 +38,6 @@ jobs:
       run: |
         echo "Validating JSON Schema files against draft 2020-12..."
         python scripts/validate_schemas.py schemas/*.schema.json
-
-    - name: Check for schema changes
-      id: schema-changes
-      run: |
-        if git diff --name-only HEAD~1 HEAD | grep -E '\.(schema\.)?json$'; then
-          echo "schema_changed=true" >> $GITHUB_OUTPUT
-          echo "📝 Schema files have been modified"
-        else
-          echo "schema_changed=false" >> $GITHUB_OUTPUT
-          echo "ℹ️ No schema files modified"
-        fi
-
-    - name: Generate schema index
-      if: steps.schema-changes.outputs.schema_changed == 'true'
-      run: |
-        echo "Updating schema index..."
-        python scripts/update_index.py
-
-    - name: Commit and push changes
-      if: steps.schema-changes.outputs.schema_changed == 'true' && github.event_name == 'push' && github.ref == 'refs/heads/main'
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        
-        if git diff --quiet; then
-          echo "No changes to commit"
-        else
-          git add .
-          git commit -m "Auto-update schema index [skip ci]"
-          git push
-          echo "✅ Changes pushed successfully"
-        fi
 
     - name: Create validation report
       if: always()
