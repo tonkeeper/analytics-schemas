@@ -67,14 +67,9 @@
                 "provider_name": {
                     "type": "string",
                     "description": "Name of the swap provider"
-                },
-                "provider_domain": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "Domain of the swap provider"
                 }
             },
-            "required": ["name", "type", "fee_paid_in", "jetton_symbol_from", "jetton_symbol_to", "provider_name", "provider_domain"]
+            "required": ["name", "type", "fee_paid_in", "jetton_symbol_from", "jetton_symbol_to", "provider_name"]
         },
         "SwapFailed": {
             "type": "object",
@@ -108,14 +103,9 @@
                 "provider_name": {
                     "type": "string",
                     "description": "Name of the swap provider"
-                },
-                "provider_domain": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "Domain of the swap provider"
                 }
             },
-            "required": ["name", "type", "error_message", "fee_paid_in", "jetton_symbol_from", "jetton_symbol_to", "provider_name", "provider_domain"]
+            "required": ["name", "type", "error_message", "fee_paid_in", "jetton_symbol_from", "jetton_symbol_to", "provider_name"]
         },
         "SwapSuccess": {
             "type": "object",
@@ -145,14 +135,9 @@
                 "provider_name": {
                     "type": "string",
                     "description": "Name of the swap provider"
-                },
-                "provider_domain": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "Domain of the swap provider"
                 }
             },
-            "required": ["name", "type", "fee_paid_in", "jetton_symbol_from", "jetton_symbol_to", "provider_name", "provider_domain"]
+            "required": ["name", "type", "fee_paid_in", "jetton_symbol_from", "jetton_symbol_to", "provider_name"]
         }
     }
 } 
