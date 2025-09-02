@@ -12,18 +12,9 @@
                 "type": {
                     "const": "native",
                     "description": "Type of swap implementation"
-                },
-                "provider_name": {
-                    "type": "string",
-                    "description": "Name of the swap provider"
-                },
-                "provider_domain": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "Domain of the swap provider"
                 }
             },
-            "required": ["name", "type", "provider_name", "provider_domain"]
+            "required": ["name", "type"]
         },
         "SwapClick": {
             "type": "object",
@@ -44,54 +35,13 @@
                 "jetton_symbol_to": {
                     "type": "string",
                     "description": "Symbol of the jetton being swapped to"
-                },
-                "provider_name": {
-                    "type": "string",
-                    "description": "Name of the swap provider"
-                },
-                "provider_domain": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "Domain of the swap provider"
                 }
             },
-            "required": ["name", "type", "jetton_symbol_from", "jetton_symbol_to", "provider_name", "provider_domain"]
-        },
-        "SwapContinueToProvider": {
-            "type": "object",
-            "description": "user clicked 'Done' after choosing the provider",
-            "properties": {
-                "name": {
-                    "const": "swap_continue_to_provider",
-                    "description": "Event name identifier"
-                },
-                "type": {
-                    "const": "native",
-                    "description": "Type of swap implementation"
-                },
-                "jetton_symbol_from": {
-                    "type": "string",
-                    "description": "Symbol of the jetton being swapped from"
-                },
-                "jetton_symbol_to": {
-                    "type": "string",
-                    "description": "Symbol of the jetton being swapped to"
-                },
-                "provider_name": {
-                    "type": "string",
-                    "description": "Name of the swap provider"
-                },
-                "provider_domain": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "Domain of the swap provider"
-                }
-            },
-            "required": ["name", "type", "jetton_symbol_from", "jetton_symbol_to", "provider_name", "provider_domain"]
+            "required": ["name", "type", "jetton_symbol_from", "jetton_symbol_to"]
         },
         "SwapConfirm": {
             "type": "object",
-            "description": "After reviewing the swap info, user on CONFIRM SWAP screen clicked CONFIRM action button",
+            "description": "After reviewing the swap info, user on CONFIRM SWAP screen slides CONFIRM action button",
             "properties": {
                 "name": {
                     "const": "swap_confirm",
@@ -101,6 +51,11 @@
                     "const": "native",
                     "description": "Type of swap implementation"
                 },
+                "fee_paid_in": {
+                    "type": "string",
+                    "enum": ["ton", "battery"],
+                    "description": "Currency used to pay network fees"
+                },
                 "jetton_symbol_from": {
                     "type": "string",
                     "description": "Symbol of the jetton being swapped from"
@@ -119,7 +74,48 @@
                     "description": "Domain of the swap provider"
                 }
             },
-            "required": ["name", "type", "jetton_symbol_from", "jetton_symbol_to", "provider_name", "provider_domain"]
+            "required": ["name", "type", "fee_paid_in", "jetton_symbol_from", "jetton_symbol_to", "provider_name", "provider_domain"]
+        },
+        "SwapFailed": {
+            "type": "object",
+            "description": "Swap failed",
+            "properties": {
+                "name": {
+                    "const": "swap_failed",
+                    "description": "Event name identifier"
+                },
+                "type": {
+                    "const": "native",
+                    "description": "Type of swap implementation"
+                },
+                "error_message": {
+                    "type": "string",
+                    "description": "Error message returned for the failed swap"
+                },
+                "fee_paid_in": {
+                    "type": "string",
+                    "enum": ["ton", "battery"],
+                    "description": "Currency used to pay network fees"
+                },
+                "jetton_symbol_from": {
+                    "type": "string",
+                    "description": "Symbol of the jetton being swapped from"
+                },
+                "jetton_symbol_to": {
+                    "type": "string",
+                    "description": "Symbol of the jetton being swapped to"
+                },
+                "provider_name": {
+                    "type": "string",
+                    "description": "Name of the swap provider"
+                },
+                "provider_domain": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Domain of the swap provider"
+                }
+            },
+            "required": ["name", "type", "error_message", "fee_paid_in", "jetton_symbol_from", "jetton_symbol_to", "provider_name", "provider_domain"]
         },
         "SwapSuccess": {
             "type": "object",
@@ -133,6 +129,11 @@
                     "const": "native",
                     "description": "Type of swap implementation"
                 },
+                "fee_paid_in": {
+                    "type": "string",
+                    "enum": ["ton", "battery"],
+                    "description": "Currency used to pay network fees"
+                },
                 "jetton_symbol_from": {
                     "type": "string",
                     "description": "Symbol of the jetton being swapped from"
@@ -151,7 +152,7 @@
                     "description": "Domain of the swap provider"
                 }
             },
-            "required": ["name", "type", "jetton_symbol_from", "jetton_symbol_to", "provider_name", "provider_domain"]
+            "required": ["name", "type", "fee_paid_in", "jetton_symbol_from", "jetton_symbol_to", "provider_name", "provider_domain"]
         }
     }
 } 
